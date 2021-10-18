@@ -1,0 +1,24 @@
+spring:
+  application:
+    # имя сервиса registry
+    name: registry
+  cloud:
+    config:
+      #Информация о том месте где наш сервис получит при старте получит должен получить свои конфигурации
+      uri: http://localhost:8001
+      fail-fast: true
+      # Это пароли которые мы задавали в config-service в конфигурационном файле
+      password: admin
+      username: user
+
+eureka:
+  instance:
+#    указываем то что мы предпочитаем ip адрес, вместо имине сервиса
+    preferIpAddress: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    server:
+      waitTimeInMsWhenSyncEmpty: 0
+  server:
+    peer-node-read-timeout-ms: 100000

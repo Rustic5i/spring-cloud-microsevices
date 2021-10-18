@@ -1,0 +1,12 @@
+spring:
+  application:
+    # имя сервиса bill-service
+    name: bill-service
+  cloud:
+    config:
+      #Информация о том месте где наш сервис получит при старте получит должен получить свои конфигурации
+      uri: http://localhost:8001
+      fail-fast: true
+      # Это пароли которые мы задавали в config-service в конфигурационном файле
+      password: admin
+      username: user

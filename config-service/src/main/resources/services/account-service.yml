@@ -1,0 +1,23 @@
+#Отвечает за настройки подключения к бд
+spring:
+  jpa:
+    database: POSTGRESQL
+    properties.hibernate.temp.use_jdbc_metadata_defaults: false
+    hibernate:
+      ddl-auto: create
+    properties:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/account_service_database
+    username: root
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+
+
+server:
+  servlet:
+    # Путь с которого будет начинаться наш url в контроллере
+    context-path: /accounts
+    #По порту 8081 мы сможем обращаться к config-service
+  port: 8081

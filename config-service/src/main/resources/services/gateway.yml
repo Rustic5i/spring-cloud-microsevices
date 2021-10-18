@@ -1,0 +1,39 @@
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000
+
+ribbon:
+  ReadTimeout: 20000
+  ConnectTimeout: 20000
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 20000
+    socket-timeout-millis: 20000
+
+#Так как gateway отвечает за перенаправления запросов на другие сервисы то ему нужно знать о них
+#  Тут мы перечисляем какие сервисы у нас есть. Соблюдаем правильные имена сервисов
+  routes:
+    account-service:
+      path: /accounts/**
+      serviceId: account-service
+      stripPrefix: false
+
+    bill-service:
+      path: /bills/**
+      serviceId: bill-service
+      stripPrefix: false
+
+    deposit-service:
+      path: /deposits/**
+      serviceId: deposit-service
+      stripPrefix: false
+
+#Порт gateway
+server:
+  port: 8989
